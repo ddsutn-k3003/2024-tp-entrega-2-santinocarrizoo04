@@ -32,4 +32,9 @@ public class ColaboradorRepository {
   public void modificarFormasDe(Long id, List<FormaDeColaborarEnum> formas) {
     this.findById(id).setFormas(formas);
   }
+
+  public void remove(Colaborador colaborador){
+    this.colaboradores = this.colaboradores.stream().filter(x -> !x.getId().equals(colaborador.getId())).toList();
+  }
+
 }

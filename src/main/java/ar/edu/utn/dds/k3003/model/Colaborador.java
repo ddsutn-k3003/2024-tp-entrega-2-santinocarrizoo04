@@ -15,7 +15,11 @@ public class Colaborador {
   private Double puntos = (double) 0;
 
   public Colaborador(String nombreColab) {
+    super();
     this.nombre = nombreColab;
     this.formas = new ArrayList<>();
+  }
+  public Colaborador(){
+    super();
   }
 }
