@@ -6,6 +6,8 @@ import ar.edu.utn.dds.k3003.facades.dtos.EstadoViandaEnum;
 import ar.edu.utn.dds.k3003.facades.dtos.ViandaDTO;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.javalin.http.HttpStatus;
+
+import java.io.IOException;
 import java.util.*;
 import lombok.SneakyThrows;
 import retrofit2.Response;
@@ -28,25 +30,31 @@ public class ViandasProxy implements FachadaViandas {
                         .addConverterFactory(JacksonConverterFactory.create(objectMapper))
                         .build();
 
-        this.service = retrofit.create(ViandasRetrofitClient.class);
+        this.service = new MockRetrofitClients();
     }
 
     @Override
-    public ViandaDTO agregar(ViandaDTO viandaDTO) {
-        return null;
-    }
+    public ViandaDTO agregar(ViandaDTO viandaDTO) {return null;}
 
     @Override
-    public ViandaDTO modificarEstado(String s, EstadoViandaEnum estadoViandaEnum)
-            throws NoSuchElementException {
-        return null;
-    }
+    public ViandaDTO modificarEstado(String s, EstadoViandaEnum estadoViandaEnum) throws NoSuchElementException {return null;}
 
     @Override
-    public List<ViandaDTO> viandasDeColaborador(Long aLong, Integer integer, Integer integer1)
-            throws NoSuchElementException {
+    public List<ViandaDTO> viandasDeColaborador(Long aLong, Integer integer, Integer integer1) throws NoSuchElementException {
+        Response<List<ViandaDTO>> execute = null;
+        try {
+            execute = service.findByViandas(aLong).execute();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
 
-        return List.of();
+        if (execute.isSuccessful()){
+            return execute.body();
+        }
+        if (execute.code() == HttpStatus.NOT_FOUND.getCode()){
+            throw new NoSuchElementException("No se encontro al colaborador");
+        }
+        throw new RuntimeException("Error al conectarse con Viandas");
     }
 
     @SneakyThrows

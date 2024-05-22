@@ -6,3 +6,7 @@ Entrega 2 - Componente: Colaboradores
 
 Contexto: https://docs.google.com/document/d/1vlYmWUJaKandhazZ8mAKcG8t91IAZ-81WhJdITJhCBA/edit
 Entrega 2: https://docs.google.com/document/d/17oiIbB26KNoAQ7nGD0TwPtHExRilUdR1SxSZ5hqCTqE/edit
+
+URL del despliegue:
+
+https://two024-tp-entrega-2-santinocarrizoo04.onrender.com
