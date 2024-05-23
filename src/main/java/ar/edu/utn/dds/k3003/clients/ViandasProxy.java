@@ -43,7 +43,7 @@ public class ViandasProxy implements FachadaViandas {
     public List<ViandaDTO> viandasDeColaborador(Long aLong, Integer integer, Integer integer1) throws NoSuchElementException {
         Response<List<ViandaDTO>> execute = null;
         try {
-            execute = service.findByViandas(aLong).execute();
+            execute = service.findByViandas(aLong, integer, integer1).execute();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

@@ -74,7 +74,7 @@ public class MockRetrofitClients implements ViandasRetrofitClient, LogisticaRetr
     }
 
     @Override
-    public Call<List<ViandaDTO>> findByViandas(Long id) {
+    public Call<List<ViandaDTO>> findByViandas(Long id, Integer integ, Integer integ1) {
         return new Call<List<ViandaDTO>>() {
             @Override
             public Response<List<ViandaDTO>> execute() {
